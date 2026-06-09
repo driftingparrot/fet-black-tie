@@ -3,7 +3,7 @@ import { prisma } from '@/lib/db/prisma';
 import { FapshiWebhookSchema } from '@/lib/validations/webhook.schema';
 import { generateTicketsForOrder } from '@/lib/services/ticket.service';
 import { dispatchTicketWhatsApp } from '@/lib/services/whatsapp.service';
-import { TIER_PRICE } from '@/types';
+import { TIER_PRICE, type TicketTier } from '@/types';
 
 export async function POST(req: NextRequest) {
   const secret = req.headers.get('x-wh-secret');
@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
   if (order.status !== 'PENDING') return NextResponse.json({ ok: true });
 
   if (payload.status === 'SUCCESSFUL') {
-    if (!payload.amount || payload.amount < TIER_PRICE[order.tier]) {
+    if (!payload.amount || payload.amount < TIER_PRICE[order.tier as TicketTier]) {
       await prisma.order.update({
         where: { id: order.id },
         data: { status: 'FAILED', fapshiTransId: payload.transId },
@@ -62,6 +62,7 @@ export async function POST(req: NextRequest) {
         buyerName: order.buyerName,
         tier: order.tier,
         qrSlug: ticket.qrSlug,
+        // oxlint-disable-next-line no-console
       }).catch(console.error);
     }
   } else if (payload.status === 'FAILED' || payload.status === 'EXPIRED') {

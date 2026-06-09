@@ -19,7 +19,7 @@ export async function createBookingAction(formData: FormData): Promise<BookingAc
 
   const parsed = BookingSchema.safeParse(raw);
   if (!parsed.success) {
-    return { success: false, error: parsed.error.errors[0]?.message ?? 'Invalid input' };
+    return { success: false, error: parsed.error.issues[0]?.message ?? 'Invalid input' };
   }
 
   const { buyerName, userEmail, phoneNumber, tier } = parsed.data;
@@ -46,6 +46,7 @@ export async function createBookingAction(formData: FormData): Promise<BookingAc
 
     return { success: true, paymentLink: fapshi.link, orderId: order.id };
   } catch (err) {
+    // oxlint-disable-next-line no-console
     console.error('[createBookingAction]', err);
     return { success: false, error: 'Payment initiation failed. Please try again.' };
   }
