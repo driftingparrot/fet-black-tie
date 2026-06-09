@@ -4,6 +4,7 @@ import { prisma } from '@/lib/db/prisma';
 import { initiatePayment } from '@/lib/services/fapshi.service';
 import { BookingSchema } from '@/lib/validations/booking.schema';
 import { TIER_PRICE } from '@/types';
+import type { TicketTier } from '@/generated/prisma/client';
 
 export type BookingActionResult =
   | { success: true; paymentLink: string; orderId: string }
@@ -67,9 +68,38 @@ export async function pollOrderStatus(
   }
 }
 
-export async function getOrderWithTickets(orderId: string) {
-  return prisma.order.findUnique({
+export async function getOrderWithTickets(orderId: string, ownerEmail?: string) {
+  const order = await prisma.order.findUnique({
     where: { id: orderId },
     include: { tickets: true },
+  });
+  if (!order) return null;
+  if (ownerEmail && order.userEmail !== ownerEmail) return null;
+  return order;
+}
+
+export type OrderSummary = {
+  id: string;
+  buyerName: string;
+  userEmail: string;
+  tier: TicketTier;
+  amount: number;
+  status: string;
+  createdAt: Date;
+};
+
+export async function getOrders(limit = 50): Promise<OrderSummary[]> {
+  return prisma.order.findMany({
+    orderBy: { createdAt: 'desc' },
+    take: limit,
+    select: {
+      id: true,
+      buyerName: true,
+      userEmail: true,
+      tier: true,
+      amount: true,
+      status: true,
+      createdAt: true,
+    },
   });
 }
