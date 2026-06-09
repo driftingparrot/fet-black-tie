@@ -28,7 +28,7 @@ export default function SpotlightCard({ children, className = '' }: SpotlightCar
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`relative overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] transition-colors duration-300 hover:border-[var(--color-gold-dark)] ${className}`}
+      className={`relative overflow-hidden rounded-xl border border-(--color-border) bg-surface transition-colors duration-300 hover:border-gold-dark ${className}`}
     >
       <div
         ref={glowRef}

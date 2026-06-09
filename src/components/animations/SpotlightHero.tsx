@@ -36,7 +36,7 @@ export default function SpotlightHero({ children, className = '' }: SpotlightHer
     <div ref={containerRef} className={`relative overflow-hidden ${className}`}>
       <div
         ref={spotlightRef}
-        className="pointer-events-none fixed -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full z-0"
+        className="pointer-events-none fixed -translate-x-1/2 -translate-y-1/2 w-150 h-150 rounded-full z-0"
         style={{
           background:
             'radial-gradient(circle, rgba(201,40,14,0.18) 0%, rgba(232,175,15,0.06) 40%, transparent 70%)',
