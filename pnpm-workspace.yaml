@@ -1,3 +1,9 @@
 ignoredBuiltDependencies:
   - sharp
   - unrs-resolver
+minimumReleaseAge: 4320 # 3 days
+packages:
+  - "packages/*"
+  - "apps/*"
+  - "libs/*"
+  - "examples/*"

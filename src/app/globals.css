@@ -1,37 +1,37 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
   /* Backgrounds & surfaces */
-  --color-bg: #0A0A0E;
-  --color-surface: #12121A;
-  --color-surface-2: #1C1C28;
+  --color-bg: #0a0a0e;
+  --color-surface: #12121a;
+  --color-surface-2: #1c1c28;
 
   /* Gold palette */
-  --color-gold: #E8AF0F;
-  --color-gold-light: #FFD700;
-  --color-gold-dark: #B8860B;
+  --color-gold: #e8af0f;
+  --color-gold-light: #ffd700;
+  --color-gold-dark: #b8860b;
 
   /* Red accent */
-  --color-red: #C9280E;
-  --color-red-glow: rgba(201, 40, 14, 0.20);
+  --color-red: #c9280e;
+  --color-red-glow: rgba(201, 40, 14, 0.2);
 
   /* Ticket stub colors */
-  --color-stub-yellow: #F5B700;
-  --color-stub-green: #1F9935;
-  --color-stub-vip: #7C3AED;
+  --color-stub-yellow: #f5b700;
+  --color-stub-green: #1f9935;
+  --color-stub-vip: #7c3aed;
 
   /* Text */
-  --color-text: #FFFFFF;
-  --color-text-muted: #9B9BB0;
+  --color-text: #ffffff;
+  --color-text-muted: #9b9bb0;
 
   /* Semantic */
-  --color-success: #22C55E;
-  --color-error: #EF4444;
-  --color-warning: #F59E0B;
+  --color-success: #22c55e;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
 
   /* Typography */
   --font-display: var(--font-bebas), Impact, sans-serif;
@@ -44,8 +44,14 @@
   --animate-spin-slow: spin 2s linear infinite;
 
   @keyframes pulse-ring {
-    0% { transform: scale(1); opacity: 0.8; }
-    100% { transform: scale(1.6); opacity: 0; }
+    0% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1.6);
+      opacity: 0;
+    }
   }
 }
 
@@ -92,38 +98,38 @@
 }
 
 :root {
-  --background: #0A0A0E;
-  --foreground: #FFFFFF;
-  --card: #12121A;
-  --card-foreground: #FFFFFF;
-  --popover: #12121A;
-  --popover-foreground: #FFFFFF;
-  --primary: #E8AF0F;
+  --background: #0a0a0e;
+  --foreground: #ffffff;
+  --card: #12121a;
+  --card-foreground: #ffffff;
+  --popover: #12121a;
+  --popover-foreground: #ffffff;
+  --primary: #e8af0f;
   --primary-foreground: #000000;
-  --secondary: #1C1C28;
-  --secondary-foreground: #FFFFFF;
-  --muted: #1C1C28;
-  --muted-foreground: #9B9BB0;
-  --accent: #E8AF0F;
+  --secondary: #1c1c28;
+  --secondary-foreground: #ffffff;
+  --muted: #1c1c28;
+  --muted-foreground: #9b9bb0;
+  --accent: #e8af0f;
   --accent-foreground: #000000;
-  --destructive: #C9280E;
-  --border: #2A2A3A;
-  --input: #2A2A3A;
-  --ring: #E8AF0F;
+  --destructive: #c9280e;
+  --border: #2a2a3a;
+  --input: #2a2a3a;
+  --ring: #e8af0f;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
   --radius: 0.625rem;
-  --sidebar: #12121A;
-  --sidebar-foreground: #FFFFFF;
-  --sidebar-primary: #E8AF0F;
+  --sidebar: #12121a;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #e8af0f;
   --sidebar-primary-foreground: #000000;
-  --sidebar-accent: #1C1C28;
-  --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: #2A2A3A;
-  --sidebar-ring: #E8AF0F;
+  --sidebar-accent: #1c1c28;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #2a2a3a;
+  --sidebar-ring: #e8af0f;
 }
 
 @layer base {
@@ -159,6 +165,13 @@ body {
 }
 
 /* Custom scrollbar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--color-surface); }
-::-webkit-scrollbar-thumb { background: var(--color-gold-dark); border-radius: 3px; }
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold-dark);
+  border-radius: 3px;
+}
