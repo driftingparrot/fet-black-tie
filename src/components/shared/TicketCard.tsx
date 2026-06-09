@@ -19,30 +19,30 @@ export default function TicketCard({ tier, selected = false, onSelect }: TicketC
       className={[
         'relative flex w-full max-w-lg rounded-md overflow-hidden cursor-pointer',
         'border transition-all duration-200',
-        'bg-[var(--color-surface)]',
+        'bg-surface',
         selected
-          ? 'border-[var(--color-gold)] shadow-[0_0_20px_rgba(232,175,15,0.3)]'
-          : 'border-[var(--color-border)] hover:border-[var(--color-gold-dark)]',
+          ? 'border-gold shadow-[0_0_20px_rgba(232,175,15,0.3)]'
+          : 'border-(--color-border) hover:border-gold-dark',
         'active:scale-[0.98]',
       ].join(' ')}
       aria-pressed={selected}
       aria-label={`Select ${TIER_LABELS[tier]} ticket — ${TIER_PRICE[tier].toLocaleString()} XAF`}
     >
       {/* Dashed tear-line */}
-      <div className="absolute right-20 top-0 bottom-0 border-l border-dashed border-[var(--color-border)] z-10" />
+      <div className="absolute right-20 top-0 bottom-0 border-l border-dashed border-(--color-border) z-10" />
 
       {/* Main ticket body */}
       <div className="flex-1 p-4 flex flex-col gap-3 min-w-0">
         <div className="flex items-center gap-2">
           <UniversityLogos size={24} />
-          <span className="font-display text-lg text-[var(--color-gold)] uppercase tracking-wide ml-2 truncate">
+          <span className="font-display text-lg text-gold uppercase tracking-wide ml-2 truncate">
             FET Black Tie Event
           </span>
         </div>
 
-        <div className="h-px bg-[var(--color-border)]" />
+        <div className="h-px bg-(--color-border)" />
 
-        <div className="flex flex-wrap gap-2 text-xs text-[var(--color-text-muted)]">
+        <div className="flex flex-wrap gap-2 text-xs text-text-muted">
           <span>📍 {process.env.NEXT_PUBLIC_VENUE ?? 'The Millennium Hall'}</span>
           <span>🗓️ 4 Jul 2026</span>
           <span>⏰ 6:00 PM</span>
@@ -50,7 +50,7 @@ export default function TicketCard({ tier, selected = false, onSelect }: TicketC
 
         <div className="flex items-baseline gap-2">
           <span className="font-heading text-xl text-white">{TIER_LABELS[tier]}</span>
-          <span className="text-xs text-[var(--color-text-muted)]">
+          <span className="text-xs text-text-muted">
             {TIER_SLOTS[tier]} {TIER_SLOTS[tier] === 1 ? 'slot' : 'slots'}
           </span>
         </div>

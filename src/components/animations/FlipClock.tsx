@@ -37,15 +37,12 @@ function Digit({ value, label }: { value: number; label: string }) {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="bg-[var(--color-surface-2)] border border-[var(--color-border)] rounded-lg px-4 py-2 min-w-[64px] text-center">
-        <span
-          ref={digitRef}
-          className="font-display text-4xl text-[var(--color-gold)] tabular-nums"
-        >
+      <div className="bg-surface-2 border border-(--color-border) rounded-lg px-4 py-2 min-w-16 text-center">
+        <span ref={digitRef} className="font-display text-4xl text-gold tabular-nums">
           {String(value).padStart(2, '0')}
         </span>
       </div>
-      <span className="font-sans text-[10px] uppercase tracking-widest text-[var(--color-text-muted)] mt-1">
+      <span className="font-sans text-[10px] uppercase tracking-widest text-text-muted mt-1">
         {label}
       </span>
     </div>
@@ -64,11 +61,11 @@ export default function FlipClock() {
   return (
     <div className="flex gap-3 items-center" aria-label="Countdown to event">
       <Digit value={time.days} label="days" />
-      <span className="font-display text-3xl text-[var(--color-gold)] mb-4">:</span>
+      <span className="font-display text-3xl text-gold mb-4">:</span>
       <Digit value={time.hours} label="hrs" />
-      <span className="font-display text-3xl text-[var(--color-gold)] mb-4">:</span>
+      <span className="font-display text-3xl text-gold mb-4">:</span>
       <Digit value={time.minutes} label="min" />
-      <span className="font-display text-3xl text-[var(--color-gold)] mb-4">:</span>
+      <span className="font-display text-3xl text-gold mb-4">:</span>
       <Digit value={time.seconds} label="sec" />
     </div>
   );
