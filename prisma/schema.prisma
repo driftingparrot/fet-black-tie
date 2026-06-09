@@ -1,0 +1,75 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+enum TicketTier {
+  CLASSIC
+  CLASSIC_COUPLE
+  VIP
+  VIP_COUPLE
+  TABLE_OF_5
+}
+
+enum OrderStatus {
+  PENDING
+  SUCCESSFUL
+  FAILED
+  EXPIRED
+}
+
+model Order {
+  id                String      @id @default(cuid())
+  fapshiTransId     String?     @unique
+  fapshiPaymentLink String?
+  externalId        String      @unique
+  buyerName         String
+  userEmail         String
+  phoneNumber       String
+  tier              TicketTier
+  amount            Int
+  paidAmount        Int?
+  revenue           Int?
+  status            OrderStatus @default(PENDING)
+  medium            String?
+  payerName         String?
+  tickets           Ticket[]
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+
+  @@index([status])
+  @@index([userEmail])
+  @@index([createdAt])
+}
+
+model Ticket {
+  id          String    @id @default(cuid())
+  orderId     String
+  order       Order     @relation(fields: [orderId], references: [id])
+  qrSlug      String    @unique @default(uuid())
+  slotsTotal  Int
+  slotsUsed   Int       @default(0)
+  isFullyUsed Boolean   @default(false)
+  firstScanAt DateTime?
+  lastScanAt  DateTime?
+  createdAt   DateTime  @default(now())
+
+  @@index([qrSlug])
+  @@index([orderId])
+}
+
+model AnonymousMessage {
+  id          String    @id @default(cuid())
+  content     String    @db.Text
+  status      String    @default("PENDING")
+  displayName String?
+  approvedAt  DateTime?
+  createdAt   DateTime  @default(now())
+
+  @@index([status])
+  @@index([createdAt])
+}
