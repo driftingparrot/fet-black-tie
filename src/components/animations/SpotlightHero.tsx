@@ -16,6 +16,7 @@ export default function SpotlightHero({ children, className = '' }: SpotlightHer
   useGSAP(
     () => {
       if (!spotlightRef.current || !containerRef.current) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
       const xTo = gsap.quickTo(spotlightRef.current, 'x', { duration: 0.6, ease: 'power3' });
       const yTo = gsap.quickTo(spotlightRef.current, 'y', { duration: 0.6, ease: 'power3' });
