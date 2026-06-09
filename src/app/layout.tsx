@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Bebas_Neue, Anton, Pinyon_Script, DM_Sans } from 'next/font/google';
 import './globals.css';
+import SmoothScrollProvider from '@/components/shared/SmoothScrollProvider';
 
 const bebasNeue = Bebas_Neue({
   subsets: ['latin'],
@@ -37,7 +38,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${bebasNeue.variable} ${anton.variable} ${pinyonScript.variable} ${dmSans.variable}`}
     >
-      <body className="bg-bg text-text antialiased">{children}</body>
+      <body className="bg-bg text-text antialiased">
+        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+      </body>
     </html>
   );
 }
