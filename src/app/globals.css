@@ -9,6 +9,7 @@
   --color-bg: #0A0A0E;
   --color-surface: #12121A;
   --color-surface-2: #1C1C28;
+  --color-border: #2A2A3A;
 
   /* Gold palette */
   --color-gold: #E8AF0F;
@@ -26,7 +27,7 @@
 
   /* Text */
   --color-text: #FFFFFF;
-  --color-muted-custom: #9B9BB0;
+  --color-text-muted: #9B9BB0;
 
   /* Semantic */
   --color-success: #22C55E;
