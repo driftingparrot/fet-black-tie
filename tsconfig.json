@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
+    "target": "ES2023",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
+    "erasableSyntaxOnly": true,
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -19,7 +20,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@generated/client": ["./src/generated/prisma/client.ts"],
+      "@generated/*": ["./src/generated/prisma/*"]
     }
   },
   "include": [
@@ -30,5 +33,5 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "scripts"]
 }
