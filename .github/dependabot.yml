@@ -7,7 +7,7 @@ updates:
       interval: "weekly"
       day: "monday"
       time: "03:00"
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 10
     pull-request-branch-name:
       separator: "/"
     commit-message:
@@ -21,3 +21,26 @@ updates:
       - dependency-type: "direct"
     rebase-strategy: "auto"
     versioning-strategy: "auto"
+    groups:
+      development-dependencies:
+        patterns:
+          - "@commitlint/*"
+          - "@tailwindcss/*"
+          - "@types/*"
+          - "husky"
+          - "lint-staged"
+          - "oxfmt"
+          - "oxlint"
+          - "tailwindcss"
+          - "typescript"
+      production-dependencies:
+        exclude-patterns:
+          - "@commitlint/*"
+          - "@tailwindcss/*"
+          - "@types/*"
+          - "husky"
+          - "lint-staged"
+          - "oxfmt"
+          - "oxlint"
+          - "tailwindcss"
+          - "typescript"
